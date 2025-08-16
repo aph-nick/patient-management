@@ -6,6 +6,8 @@
 /home/nick/IdeaProjects/patient-management/patient-service/src/main/java/com/pm/patientservice/exception/EmailAlreadyExistsException.java
 /home/nick/IdeaProjects/patient-management/patient-service/src/main/java/com/pm/patientservice/exception/GlobalExceptionHandler.java
 /home/nick/IdeaProjects/patient-management/patient-service/src/main/java/com/pm/patientservice/exception/PatientNotFoundException.java
+/home/nick/IdeaProjects/patient-management/patient-service/src/main/java/com/pm/patientservice/grpc/BillingServiceGrpcClient.java
+/home/nick/IdeaProjects/patient-management/patient-service/src/main/java/com/pm/patientservice/kafka/KafkaProducer.java
 /home/nick/IdeaProjects/patient-management/patient-service/src/main/java/com/pm/patientservice/mapper/PatientMapper.java
 /home/nick/IdeaProjects/patient-management/patient-service/src/main/java/com/pm/patientservice/model/Patient.java
 /home/nick/IdeaProjects/patient-management/patient-service/src/main/java/com/pm/patientservice/repository/PatientRepository.java
@@ -16,3 +18,6 @@
 /home/nick/IdeaProjects/patient-management/patient-service/target/generated-sources/protobuf/java/billing/BillingResponse.java
 /home/nick/IdeaProjects/patient-management/patient-service/target/generated-sources/protobuf/java/billing/BillingResponseOrBuilder.java
 /home/nick/IdeaProjects/patient-management/patient-service/target/generated-sources/protobuf/java/billing/BillingServiceOuterClass.java
+/home/nick/IdeaProjects/patient-management/patient-service/target/generated-sources/protobuf/java/patient/events/PatientEvent.java
+/home/nick/IdeaProjects/patient-management/patient-service/target/generated-sources/protobuf/java/patient/events/PatientEventOrBuilder.java
+/home/nick/IdeaProjects/patient-management/patient-service/target/generated-sources/protobuf/java/patient/events/PatientEventOuterClass.java
