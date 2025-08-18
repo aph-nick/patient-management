@@ -15,7 +15,7 @@ public class JwtValidationGatewayFilterFactory
 
     public JwtValidationGatewayFilterFactory(
             WebClient.Builder webClientBuilder,
-            @Value("${auth.service.url") String authServiceUrl) {
+            @Value("${auth.service.url}") String authServiceUrl) {
         this.webClient = webClientBuilder.baseUrl(authServiceUrl).build();
     }
 
