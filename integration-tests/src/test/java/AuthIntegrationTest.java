@@ -32,4 +32,22 @@ public class AuthIntegrationTest {
 
         System.out.println("Generated Token: " +response.jsonPath().getString("token"));
     }
+
+    @Test
+    public void shouldReturnUnauthorizedOnInvalidLogin() {
+        String loginPayLoad = """
+                    {
+                        "email": "invalid_user@test.com",
+                        "password": "incorrect_password"
+                    }
+                """;
+        RestAssured.given()
+                .contentType("application/json")
+                .body(loginPayLoad)
+                .when()
+                .post("/auth/login")
+                .then()
+                .statusCode(401);
+    }
+
 }
