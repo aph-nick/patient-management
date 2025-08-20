@@ -18,17 +18,18 @@ spring:
             - Path=/api/patients/**
           filters:
             - StripPrefix=1
-            - JwtValidation # Ensures the user is authenticated (from JwtValidationGatewayFilterFactory class)
+            - JwtValidation # Ensures the user is authenticated before reaching P-S (from JwtValidationGatewayFilterFactory class)
 
         - id: api-docs-patient-route
-          uri: http://patient-service:4000
+          uri: http://patient-service:4000 # http://localhost:4004/api-docs/patients
           predicates:
             - Path=/api-docs/patients
           filters:
             - RewritePath=/api-docs/patients,/v3/api-docs
 
         - id: api-docs-auth-route
-          uri: http://auth-service:4005
+          uri: http://auth-service:4005 # http://localhost:4004/api-docs/auth
+
           predicates:
             - Path=/api-docs/auth
           filters:

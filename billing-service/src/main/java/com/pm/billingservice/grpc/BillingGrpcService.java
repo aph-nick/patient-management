@@ -18,7 +18,8 @@ public class BillingGrpcService extends BillingServiceImplBase {
 
         log.info("createBillingAccount request received {}",  billingRequest.toString());
 
-        //Busines Logic
+        /// Business Logic
+        /// Payment infomartion / management, Invoice handler (PAID, CANCELLED, OVERDUE)
 
         BillingResponse billingResponse = BillingResponse.newBuilder()
                 .setAccountId("12345")

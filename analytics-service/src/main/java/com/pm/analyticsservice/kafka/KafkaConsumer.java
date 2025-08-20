@@ -18,6 +18,7 @@ public class KafkaConsumer {
             PatientEvent patientEvent = PatientEvent.parseFrom(event);
 
             ///  ... Business logic will go here
+            ///  Collecting Metrics, Raports, Statistics
 
             log.info("Received patient event: [PatientID: {}, PatientName: {}, PatientEmail: {}]",
                     patientEvent.getPatientId(), patientEvent.getName(), patientEvent.getEmail());

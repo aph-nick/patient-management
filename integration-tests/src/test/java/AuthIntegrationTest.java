@@ -11,21 +11,22 @@ public class AuthIntegrationTest {
         RestAssured.baseURI = "http://localhost:4004";
     }
 
-    // Arrange -> Act -> Assert
+    /// Arrange -> Act -> Assert
     @Test
     public void shouldReturnOKWithValidToken() {
-        String loginPayLoad = """
+        ///  Arrange
+        String loginPayLoad = """ 
                     {
                         "email": "testuser@test.com",
                         "password": "password123"
                     }
                 """;
-        Response response = RestAssured.given()
+        Response response = RestAssured.given() /// Act
                 .contentType("application/json")
                 .body(loginPayLoad)
                 .when()
                 .post("/auth/login")
-                .then()
+                .then() /// Assert
                 .statusCode(200)
                 .body("token", notNullValue())
                 .extract().response();
