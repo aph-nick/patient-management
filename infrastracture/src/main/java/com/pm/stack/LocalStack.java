@@ -1,7 +1,7 @@
 package com.pm.stack;
 
-import com.amazonaws.services.ec2.model.Vpc;
 import software.amazon.awscdk.*;
+import software.amazon.awscdk.services.ec2.Vpc;
 
 public class LocalStack extends Stack {
     private final Vpc vpc;
@@ -13,11 +13,11 @@ public class LocalStack extends Stack {
     }
 
     private Vpc createVpc(){
-        Vpc.Builder
+        return Vpc.Builder
                 .create(this, "PatientManagementVPC")
                 .vpcName("PatientManagementVPC")
                 .maxAzs(2)
-                .build;
+                .build();
     }
 
     public static void main (final String[] args) {
