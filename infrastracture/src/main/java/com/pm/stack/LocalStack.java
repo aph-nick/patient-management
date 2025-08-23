@@ -2,6 +2,7 @@ package com.pm.stack;
 
 import software.amazon.awscdk.*;
 import software.amazon.awscdk.services.ec2.Vpc;
+import software.amazon.awscdk.services.rds.DatabaseInstance;
 
 public class LocalStack extends Stack {
     private final Vpc vpc;
@@ -18,6 +19,10 @@ public class LocalStack extends Stack {
                 .vpcName("PatientManagementVPC")
                 .maxAzs(2)
                 .build();
+    }
+
+    private DatabaseInstance Instance() {
+
     }
 
     public static void main (final String[] args) {
