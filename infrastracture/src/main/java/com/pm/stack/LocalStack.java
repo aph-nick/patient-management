@@ -41,7 +41,7 @@ public class LocalStack extends Stack {
                 "auth-service",
                 List.of(4005),
                 authServiceDb,
-                // Use own SecretKey
+                /// Use own SecretKey
                 Map.of("JWT_SECRET", "TjBuOTlpeGQwYjdDc1I4amIteVVVamJ1WHdDYmxFR25odnFjN3FFTFRSSQ"));
 
         authService.getNode().addDependency(authDbHealthCheck);
@@ -59,7 +59,7 @@ public class LocalStack extends Stack {
                 null,
                 null);
 
-        //Make sure Kafka is running before starting analytics-service
+        /// Make sure Kafka is running before starting analytics-service
         analytics.getNode().addDependency(mskCluster);
 
         FargateService patientService = createFargateService("PatientService",
@@ -116,15 +116,15 @@ public class LocalStack extends Stack {
                 .build();
     }
 
-    private CfnCluster createMskCluster() {
+    private CfnCluster createMskCluster(){
         return CfnCluster.Builder.create(this, "MskCluster")
-                .clusterName("kafka-cluster")
+                .clusterName("kafa-cluster")
                 .kafkaVersion("2.8.0")
-                .numberOfBrokerNodes(1)
+                .numberOfBrokerNodes(2)
                 .brokerNodeGroupInfo(CfnCluster.BrokerNodeGroupInfoProperty.builder()
                         .instanceType("kafka.m5.xlarge")
-                        .clientSubnets(vpc.getPrivateSubnets().stream().map(
-                                ISubnet::getSubnetId)
+                        .clientSubnets(vpc.getPrivateSubnets().stream()
+                                .map(ISubnet::getSubnetId)
                                 .collect(Collectors.toList()))
                         .brokerAzDistribution("DEFAULT")
                         .build())

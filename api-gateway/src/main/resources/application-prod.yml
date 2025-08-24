@@ -1,0 +1,36 @@
+server:
+  port: 4004 # API Gateway Listens on 4004
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service-route
+          uri: http://host.docker.internal:4005
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+
+        - id: patient-service-route
+          uri: http://host.docker.internal:4000
+          predicates:
+            - Path=/api/patients/**
+          filters:
+            - StripPrefix=1
+            - JwtValidation # Ensures the user is authenticated before reaching P-S (from JwtValidationGatewayFilterFactory class)
+
+        - id: api-docs-patient-route
+          uri: http://host.docker.internal:4000 # http://localhost:4004/api-docs/patients
+          predicates:
+            - Path=/api-docs/patients
+          filters:
+            - RewritePath=/api-docs/patients,/v3/api-docs
+
+        - id: api-docs-auth-route
+          uri: http://host.docker.internal:4005 # http://localhost:4004/api-docs/auth
+
+          predicates:
+            - Path=/api-docs/auth
+          filters:
+            - RewritePath=/api-docs/auth,/v3/api-docs
