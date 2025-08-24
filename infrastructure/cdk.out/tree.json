@@ -1130,7 +1130,7 @@
                 },
                 "clusterName": "kafa-cluster",
                 "kafkaVersion": "2.8.0",
-                "numberOfBrokerNodes": 2
+                "numberOfBrokerNodes": 4
               }
             },
             "constructInfo": {
@@ -1263,9 +1263,7 @@
                               "Ref": "AuthServiceLogGroup34125B38"
                             },
                             "awslogs-stream-prefix": "auth-service",
-                            "awslogs-region": {
-                              "Ref": "AWS::Region"
-                            }
+                            "awslogs-region": "eu-central-1"
                           }
                         },
                         "environment": [
@@ -1673,9 +1671,7 @@
                               "Ref": "BillingServiceLogGroupDD61E740"
                             },
                             "awslogs-stream-prefix": "billing-service",
-                            "awslogs-region": {
-                              "Ref": "AWS::Region"
-                            }
+                            "awslogs-region": "eu-central-1"
                           }
                         },
                         "environment": [
@@ -2018,9 +2014,7 @@
                               "Ref": "AnalyticsServiceLogGroupBD82F12A"
                             },
                             "awslogs-stream-prefix": "analytics-service",
-                            "awslogs-region": {
-                              "Ref": "AWS::Region"
-                            }
+                            "awslogs-region": "eu-central-1"
                           }
                         },
                         "environment": [
@@ -2363,9 +2357,7 @@
                               "Ref": "PatientServiceLogGroup4A5C3809"
                             },
                             "awslogs-stream-prefix": "patient-service",
-                            "awslogs-region": {
-                              "Ref": "AWS::Region"
-                            }
+                            "awslogs-region": "eu-central-1"
                           }
                         },
                         "environment": [
@@ -2772,9 +2764,7 @@
                               "Ref": "APIGatewayLogGroupCDBB0658"
                             },
                             "awslogs-stream-prefix": "api-gateway",
-                            "awslogs-region": {
-                              "Ref": "AWS::Region"
-                            }
+                            "awslogs-region": "eu-central-1"
                           }
                         },
                         "environment": [

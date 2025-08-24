@@ -660,7 +660,7 @@
     },
     "ClusterName": "kafa-cluster",
     "KafkaVersion": "2.8.0",
-    "NumberOfBrokerNodes": 2
+    "NumberOfBrokerNodes": 4
    }
   },
   "PatientManagementCluster98E10F8D": {
@@ -772,9 +772,7 @@
          "Ref": "AuthServiceLogGroup34125B38"
         },
         "awslogs-stream-prefix": "auth-service",
-        "awslogs-region": {
-         "Ref": "AWS::Region"
-        }
+        "awslogs-region": "eu-central-1"
        }
       },
       "Name": "auth-serviceContainer",
@@ -978,9 +976,7 @@
          "Ref": "BillingServiceLogGroupDD61E740"
         },
         "awslogs-stream-prefix": "billing-service",
-        "awslogs-region": {
-         "Ref": "AWS::Region"
-        }
+        "awslogs-region": "eu-central-1"
        }
       },
       "Name": "billing-serviceContainer",
@@ -1177,9 +1173,7 @@
          "Ref": "AnalyticsServiceLogGroupBD82F12A"
         },
         "awslogs-stream-prefix": "analytics-service",
-        "awslogs-region": {
-         "Ref": "AWS::Region"
-        }
+        "awslogs-region": "eu-central-1"
        }
       },
       "Name": "analytics-serviceContainer",
@@ -1437,9 +1431,7 @@
          "Ref": "PatientServiceLogGroup4A5C3809"
         },
         "awslogs-stream-prefix": "patient-service",
-        "awslogs-region": {
-         "Ref": "AWS::Region"
-        }
+        "awslogs-region": "eu-central-1"
        }
       },
       "Name": "patient-serviceContainer",
@@ -1653,9 +1645,7 @@
          "Ref": "APIGatewayLogGroupCDBB0658"
         },
         "awslogs-stream-prefix": "api-gateway",
-        "awslogs-region": {
-         "Ref": "AWS::Region"
-        }
+        "awslogs-region": "eu-central-1"
        }
       },
       "Name": "APIGatewayContainer",
