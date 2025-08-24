@@ -120,7 +120,7 @@ public class LocalStack extends Stack {
         return CfnCluster.Builder.create(this, "MskCluster")
                 .clusterName("kafa-cluster")
                 .kafkaVersion("2.8.0")
-                .numberOfBrokerNodes(2)
+                .numberOfBrokerNodes(4)
                 .brokerNodeGroupInfo(CfnCluster.BrokerNodeGroupInfoProperty.builder()
                         .instanceType("kafka.m5.xlarge")
                         .clientSubnets(vpc.getPrivateSubnets().stream()
@@ -246,6 +246,9 @@ public class LocalStack extends Stack {
     public static void main (final String[] args) {
         App app = new App(AppProps.builder().outdir("./cdk.out").build());
         StackProps props = StackProps.builder()
+                .env(Environment.builder()
+                        .region("eu-central-1") /// Region FIX
+                        .build())
                 .synthesizer(new BootstraplessSynthesizer())
                 .build();
 
