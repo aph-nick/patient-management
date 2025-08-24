@@ -34,6 +34,45 @@ public class LocalStack extends Stack {
         CfnCluster mskCluster = createMskCluster();
 
         this.ecsCluster = createEcsCluster();
+
+        FargateService authService = createFargateService("AuthService",
+                "auth-service",
+                List.of(4005),
+                authServiceDb,
+                // Use own SecretKey
+                Map.of("JWT_SECRET", "TjBuOTlpeGQwYjdDc1I4amIteVVVamJ1WHdDYmxFR25odnFjN3FFTFRSSQ"));
+
+        authService.getNode().addDependency(authDbHealthCheck);
+        authService.getNode().addDependency(authServiceDb);
+
+        FargateService billingService = createFargateService("BillingService",
+                "billing-service",
+                List.of(4001, 9001),
+                null,
+                null);
+
+        FargateService analytics = createFargateService("AnalyticsService",
+                "analytics-service",
+                List.of(4002),
+                null,
+                null);
+
+        //Make sure Kafka is running before starting analytics-service
+        analytics.getNode().addDependency(mskCluster);
+
+        FargateService patientService = createFargateService("PatientService",
+                "patient-service",
+                List.of(4000),
+                patientServiceDb,
+                Map.of(
+                        "BILLING_SERVICE_ADDRESS", "host.docker.internal",
+                        "BILLING_SERVICE_GRPC_PORT", "9001"
+                ));
+
+        patientService.getNode().addDependency(patientDbHealthCheck);
+        patientService.getNode().addDependency(patientServiceDb);
+        patientService.getNode().addDependency(billingService);
+        patientService.getNode().addDependency(mskCluster);
     }
 
     private Vpc createVpc(){
@@ -124,6 +163,7 @@ public class LocalStack extends Stack {
                                         .removalPolicy(RemovalPolicy.DESTROY)
                                         .retention(RetentionDays.ONE_DAY)
                                         .build())
+                                .streamPrefix(imageName)
                         .build()));
 
         Map<String, String> envVars = new HashMap<>();
