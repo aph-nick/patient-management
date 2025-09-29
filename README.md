@@ -3,6 +3,8 @@
 A **microservices-based Patient Management System** built with **Java & Spring Boot**.  
 This project provides a modular approach to handling patient data, billing, authentication, and analytics in a healthcare environment.
 
+Built following ```Chris Blakey's``` Backend course for building a production-ready backend applications with microservices.
+
 ## 🚀 Architecture Overview for LocalStack Deployment
 
 <img width="1540" height="813" alt="image" src="https://github.com/user-attachments/assets/6223dfe7-6fc6-4a32-bb45-3aed679e1e15" />
